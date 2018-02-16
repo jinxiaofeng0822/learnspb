@@ -1,4 +1,4 @@
-package com.jxf.learnspb.rabbitmq;
+package com.jxf.learnspb.rabbitmq.config;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
