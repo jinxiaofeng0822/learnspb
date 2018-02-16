@@ -1,4 +1,4 @@
-package com.jxf.learnspb.dao;
+package com.jxf.learnspb.dao.mapper.learnspb;
 
 import com.jxf.learnspb.entity.Newtb;
 import com.jxf.learnspb.entity.NewtbExample;
