@@ -7,7 +7,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfig {
 	@Bean
-	public Queue queue(){
+	public Queue hello(){
 		return new Queue("hello");
+	}
+	
+	@Bean
+	public Queue many(){
+		return new Queue("many");
 	}
 }
