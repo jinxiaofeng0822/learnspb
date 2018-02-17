@@ -8,7 +8,7 @@
             <level>ERROR</level>
         </filter>-->
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36}%n%msg%n</pattern>
+            <pattern>%msg----%d{HH:mm:ss.SSS} [%thread] %-5level %caller{1}</pattern>
         </encoder>
     </appender>
 
@@ -18,7 +18,7 @@
             <fileNamePattern>D:\log\learnspb\learnspb.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}%n%msg%n</pattern>
+            <pattern>%msg----%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %caller{1}</pattern>
         </encoder>
     </appender>
 
