@@ -10,6 +10,7 @@ import com.jxf.learnspb.dao.mapper.learnspb.NewtbMapper;
 import com.jxf.learnspb.dao.mapper.spb2.Tb02Mapper;
 import com.jxf.learnspb.entity.Newtb;
 import com.jxf.learnspb.entity.Tb02;
+import com.jxf.learnspb.server.FirstServer;
 
 @RestController
 public class FirstController {
@@ -21,6 +22,9 @@ public class FirstController {
 	
 	@Autowired
 	private Tb02Mapper mapper2;
+	
+	@Autowired
+	private FirstServer firstServer;
 	
 	@RequestMapping(value = "/one", produces = "application/json; charset=utf-8")
 	public String one() {
@@ -42,5 +46,10 @@ public class FirstController {
 		mapper2.insertSelective(tb);
 		log.info("数据源2执行结束");
 		return "数据源2";
+	}
+	
+	@RequestMapping(value = "/select", produces = "application/json; charset=utf-8")
+	public String select(){
+		return firstServer.select();
 	}
 }
