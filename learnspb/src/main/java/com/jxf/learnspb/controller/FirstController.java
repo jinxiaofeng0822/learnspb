@@ -15,6 +15,7 @@ import com.jxf.learnspb.server.FirstServer;
 @RestController
 public class FirstController {
 
+	//idea测试git
 	private static Logger log = LoggerFactory.getLogger(FirstController.class);
 
 	@Autowired
