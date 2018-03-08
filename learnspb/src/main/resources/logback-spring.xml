@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration  scan="true" scanPeriod="60 seconds" debug="false">
+<configuration  scan="true" scanPeriod="600 seconds" debug="false">
     <contextName>logback</contextName>
     <property name="log.path" value="D:\log\learnspb" />
-    <!--输出到控制台-->
+
+    <!-- 彩色日志 -->
+    <!-- 彩色日志依赖的渲染类 -->
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+    <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
+    <conversionRule conversionWord="wEx"
+                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+    <!-- 彩色日志格式 -->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="${CONSOLE_LOG_PATTERN:%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}" />
+    <!-- Console 输出设置 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-       <!-- <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>ERROR</level>
-        </filter>-->
         <encoder>
-            <pattern>%msg----%d{HH:mm:ss.SSS} [%thread] %-5level %caller{1}</pattern>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
         </encoder>
     </appender>
 
@@ -18,7 +26,7 @@
             <fileNamePattern>D:\log\learnspb\learnspb.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
-            <pattern>%msg----%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %caller{1}</pattern>
+            <pattern>%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}</pattern>
         </encoder>
     </appender>
 
@@ -27,7 +35,7 @@
         <appender-ref ref="file" />
     </root>
 
-	<!--logback.LogbackDemo：类的全路径 -->
+    <!--logback.LogbackDemo：类的全路径 -->
     <logger name="com.jxf.learnspb" level="debug" additivity="false">
         <appender-ref ref="console"/>
         <appender-ref ref="file"/>
