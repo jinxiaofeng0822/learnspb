@@ -7,10 +7,10 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@RabbitListener(queues = QUEUE_SYNC_RPC)
 public class RPCServer {
 
 	@RabbitHandler
+	@RabbitListener(queues = QUEUE_SYNC_RPC)
 	public String process(String message) {
 		System.out.println("进入RPCServer。process message " + message);
 		int millis = (int) (Math.random() * 2 * 1000);
