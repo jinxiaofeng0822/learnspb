@@ -15,7 +15,7 @@
     <!-- Console 输出设置 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <pattern>%clr(%d{HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(-){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}</pattern>
             <charset>utf8</charset>
         </encoder>
     </appender>
@@ -35,7 +35,7 @@
         <appender-ref ref="file" />
     </root>
 
-    <!--logback.LogbackDemo：类的全路径 -->
+	<!--logback.LogbackDemo：类的全路径 -->
     <logger name="com.jxf.learnspb" level="debug" additivity="false">
         <appender-ref ref="console"/>
         <appender-ref ref="file"/>
