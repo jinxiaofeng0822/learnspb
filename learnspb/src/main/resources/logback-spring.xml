@@ -1,43 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration  scan="true" scanPeriod="600 seconds" debug="false">
+<configuration>
     <contextName>logback</contextName>
-    <property name="log.path" value="D:\log\learnspb" />
-
-    <!-- 彩色日志 -->
-    <!-- 彩色日志依赖的渲染类 -->
-    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
-    <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
-    <conversionRule conversionWord="wEx"
-                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
-    <!-- 彩色日志格式 -->
-    <property name="CONSOLE_LOG_PATTERN"
-              value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}" />
-    <!-- Console 输出设置 -->
-    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%clr(%d{HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(-){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}</pattern>
-            <charset>utf8</charset>
-        </encoder>
-    </appender>
+    <!-- 此xml在spring-boot-1.5.3.RELEASE.jar里 -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+    <!-- 开启后可以通过jmx动态控制日志级别(springboot Admin的功能) -->
+    <!--<jmxConfigurator/>-->
 
     <!--输出到文件-->
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>D:\log\learnspb\learnspb.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>/logs/learnspb/log.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
-            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } - [%15.15t] %-40.40logger{39} : %m%n</pattern>
         </encoder>
     </appender>
 
     <root level="info">
-        <appender-ref ref="console" />
+        <appender-ref ref="CONSOLE" />
         <appender-ref ref="file" />
     </root>
 
-	<!--logback.LogbackDemo：类的全路径 -->
+    <!--logback.LogbackDemo：类的全路径 -->
     <logger name="com.jxf.learnspb" level="debug" additivity="false">
-        <appender-ref ref="console"/>
+        <appender-ref ref="CONSOLE"/>
         <appender-ref ref="file"/>
     </logger>
 </configuration>
