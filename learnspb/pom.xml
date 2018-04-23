@@ -69,6 +69,15 @@
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
 
+		<!-- 自己添加的本地jar包-->
+		<!--<dependency>-->
+			<!--<groupId>自己起名字</groupId>-->
+			<!--<artifactId>自己起名字</artifactId>-->
+			<!--<version>自己起版本</version>-->
+			<!--<scope>system</scope>-->
+			<!--<systemPath>${basedir}/src/main/resources/lib/zaOpenapiSdk.jar</systemPath>-->
+		<!--</dependency>-->
+
 	</dependencies>
 
 		<build>
@@ -76,9 +85,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-	                <fork>true</fork>
-	            </configuration>
+				<!-- 打包时添加自己的jar包 -->
+				<!--<configuration>-->
+					<!--<includeSystemScope>true</includeSystemScope>-->
+				<!--</configuration>-->
 			</plugin>
 		</plugins>
 	</build>
