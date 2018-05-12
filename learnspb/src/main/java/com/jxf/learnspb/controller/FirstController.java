@@ -53,4 +53,9 @@ public class FirstController {
 	public String select(){
 		return firstServer.select();
 	}
+
+	@RequestMapping("/myfilter")
+	public String myfilter(){
+		return "fff";
+	}
 }
